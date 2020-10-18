@@ -8,11 +8,11 @@ import Header from './shared/header'
 export default function App() {
 
   const [food, setFood] = useState([
-    {name: 'Pizza', key: '1', image:require('./assets/pizza2.png')},
-    {name: 'Salads', key: '2', image:require('./assets/salads.png')},
-    {name: 'Desserts', key: '3',image:require('./assets/desserts.png')},
-    {name: 'Pasta', key: '4', image:require('./assets/pasta.png')},
-    {name: 'Beverages', key: '5', image:require('./assets/beverages.jpg')},
+    {name: 'Pizza', key: '1', image:require('./assets/pizza2.png'), item_no: '25 items'},
+    {name: 'Salads', key: '2', image:require('./assets/salads.png'), item_no: '25 items'},
+    {name: 'Desserts', key: '3',image:require('./assets/desserts.png'),item_no: '25 items'},
+    {name: 'Pasta', key: '4', image:require('./assets/pasta.png'),item_no: '25 items'},
+    {name: 'Beverages', key: '5', image:require('./assets/beverages.jpg'),item_no: '25 items'},
   ]);
  
   return (
@@ -24,12 +24,13 @@ export default function App() {
               renderItem={({item}) => (
                     <TouchableOpacity>
                     <View style={styles.itemContainer}>
-                    <View style={styles.pink}>
-                          <Image source= {item.image} style={styles.itemPhoto}/>  
-                    </View>
-                        {/* <Image source= {item.image} style={styles.itemPhoto}/>  */}
-                          <Text style={styles.itemText}>{item.name}</Text>
+                          <Image source= {item.image} style={styles.itemPhoto}/> 
+                          <View style={styles.itemText}>
+                              <Text>{item.name}</Text>
+                            <Text style={styles.itemNo}>{item.item_no}</Text>
+                           </View>
                       </View>
+                      
                       </TouchableOpacity>
               )}
               />
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
   },
   itemText:{
   
-    padding:50,
+    padding:30,
     paddingHorizontal: 85,
     fontSize:30,
     fontWeight: 'bold', 
@@ -83,6 +84,10 @@ const styles = StyleSheet.create({
     flex:1,
    
   },
+  itemNo:{
+    fontSize:10,
+    color:'#ddd'
+  }
   
   
 });
